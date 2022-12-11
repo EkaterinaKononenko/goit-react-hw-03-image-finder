@@ -55,7 +55,7 @@ export default class App extends Component {
         this.setState(prevState => {
           return { hits: [...prevState.hits, ...response] };
         });
-
+        console.log(response);
         this.setState({
           isLoading: false,
         });
@@ -71,8 +71,9 @@ export default class App extends Component {
   }
 
   render() {
-    const { hits, largeImageUrl, isLoading } = this.state;
+    const { hits, largeImageUrl, isLoading, page } = this.state;
     const { openModal, closeModal, handleSearch, loadMore } = this;
+    const pageQuantity = Math.floor(hits.length / 12);
 
     return (
       <div>
@@ -82,7 +83,9 @@ export default class App extends Component {
           onOpenModal={openModal}
           onCloseModal={closeModal}
         />
-        <Button onClick={loadMore} />
+        {hits.length > 11 && !isLoading && pageQuantity === page && (
+          <Button onClick={loadMore} />
+        )}
         {isLoading && <MyLoader />}
         {largeImageUrl && (
           <Modal url={largeImageUrl} onCloseModal={closeModal} />
