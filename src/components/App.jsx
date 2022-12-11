@@ -6,6 +6,7 @@ import Button from './Button/Button';
 import MyLoader from './Loader/Loader';
 import ImageGallery from './ImageGallery/ImageGallery';
 import fetchImages from './api';
+import { Container } from './App.styled';
 
 export default class App extends Component {
   state = {
@@ -15,7 +16,7 @@ export default class App extends Component {
     openedModal: null,
     isLoading: false,
     error: null,
-    largeImageUrl: '',
+    largeImageUrl: ' ',
   };
 
   handleSearch = newQuery => {
@@ -42,7 +43,7 @@ export default class App extends Component {
   closeModal = () => {
     this.setState({
       openedModal: null,
-      largeImageUrl: '',
+      largeImageUrl: ' ',
     });
   };
 
@@ -71,26 +72,22 @@ export default class App extends Component {
   }
 
   render() {
-    const { hits, largeImageUrl, isLoading, page } = this.state;
+    const { hits, largeImageUrl, isLoading, page, openedModal } = this.state;
     const { openModal, closeModal, handleSearch, loadMore } = this;
     const pageQuantity = Math.floor(hits.length / 12);
 
     return (
-      <div>
+      <Container>
         <Searchbar onSubmit={handleSearch} />
-        <ImageGallery
-          images={hits}
-          onOpenModal={openModal}
-          onCloseModal={closeModal}
-        />
+        <ImageGallery images={hits} onOpenModal={openModal} />
         {hits.length > 11 && !isLoading && pageQuantity === page && (
           <Button onClick={loadMore} />
         )}
         {isLoading && <MyLoader />}
-        {largeImageUrl && (
-          <Modal url={largeImageUrl} onCloseModal={closeModal} />
+        {openedModal && (
+          <Modal url={largeImageUrl} alt="img" onClose={closeModal} />
         )}
-      </div>
+      </Container>
     );
   }
 }

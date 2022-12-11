@@ -1,9 +1,12 @@
 import React from 'react';
+import { Image, ImgGalleryItem } from './imageGalleryItem.styled';
 
-export default function ImageGalleryItem({ src, onOpenModal, onCloseModal }) {
+const ImageGalleryItem = ({ openModal, src }) => {
   return (
-    <li onClick={onCloseModal}>
-      <img src={src} alt="" onClick={onOpenModal} width="200" />
-    </li>
+    <ImgGalleryItem onClick={openModal}>
+      <Image src={src} alt="img" />
+    </ImgGalleryItem>
   );
-}
+};
+
+export default ImageGalleryItem;

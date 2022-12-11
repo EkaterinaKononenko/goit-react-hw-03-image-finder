@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import {
+  WrapSearchbar,
+  Searchform,
+  SearchformButton,
+  SearchButtonSpan,
+  SearchInput,
+} from './Searchbar.styled';
 
 export default class Searchbar extends Component {
   state = {
@@ -22,13 +29,13 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <header>
-        <form onSubmit={this.handleSubmit}>
-          <button type="submit">
-            <span>Search</span>
-          </button>
+      <WrapSearchbar>
+        <Searchform onSubmit={this.handleSubmit}>
+          <SearchformButton type="submit">
+            <SearchButtonSpan>Search</SearchButtonSpan>
+          </SearchformButton>
 
-          <input
+          <SearchInput
             onChange={this.handleInputChange}
             value={this.state.query}
             type="text"
@@ -36,8 +43,8 @@ export default class Searchbar extends Component {
             autoFocus
             placeholder="Search images and photos"
           />
-        </form>
-      </header>
+        </Searchform>
+      </WrapSearchbar>
     );
   }
 }

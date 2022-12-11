@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
+import { ModalOverlay, ModalWindow, ModalImg } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
   handleEscClose = e => {
     if (e.code === 'Escape') {
-      this.props.onCloseModal();
+      this.props.onClose();
     }
   };
   componentDidMount() {
@@ -17,14 +18,15 @@ export default class Modal extends Component {
   }
 
   render() {
-    const { url, onCloseModal } = this.props;
+    const { url, onClose } = this.props;
+    // console.log(url);
 
     return createPortal(
-      <div className="overlay" onClose={onCloseModal}>
-        <div className="modal">
-          <img src={url} alt="" />
-        </div>
-      </div>,
+      <ModalOverlay onClick={onClose}>
+        <ModalWindow>
+          <ModalImg src={url} alt="img" />
+        </ModalWindow>
+      </ModalOverlay>,
       modalRoot
     );
   }

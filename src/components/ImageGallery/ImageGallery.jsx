@@ -1,17 +1,20 @@
 import React from 'react';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryList } from './ImageGallery.styled';
 
-export default function ImageGallery({ images, onOpenModal, onCloseModal }) {
+const ImageGallery = ({ images, onOpenModal }) => {
   return (
-    <ul className="gallery">
-      {images.map(image => (
+    <ImageGalleryList>
+      {images.map(({ id, webformatURL, largeImageURL }) => (
         <ImageGalleryItem
-          key={image.id}
-          src={image.webformatURL}
-          onOpenModal={() => onOpenModal(image.largeImageURL)}
-          onCloseModal={() => onCloseModal()}
+          key={id}
+          src={webformatURL}
+          largeImageURL={largeImageURL}
+          openModal={() => onOpenModal(largeImageURL)}
         />
       ))}
-    </ul>
+    </ImageGalleryList>
   );
-}
+};
+
+export default ImageGallery;
