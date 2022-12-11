@@ -6,7 +6,7 @@ import {
   SearchButtonSpan,
   SearchInput,
 } from './Searchbar.styled';
-import PropTypes from 'prop-types';
+import { Formik } from 'formik';
 
 export default class Searchbar extends Component {
   state = {
@@ -30,27 +30,25 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <WrapSearchbar>
-        <Searchform onSubmit={this.handleSubmit}>
-          <SearchformButton type="submit">
-            <SearchButtonSpan>Search</SearchButtonSpan>
-          </SearchformButton>
+      <Formik>
+        <WrapSearchbar>
+          <Searchform onSubmit={this.handleSubmit}>
+            <SearchformButton type="submit">
+              <SearchButtonSpan>Search</SearchButtonSpan>
+            </SearchformButton>
 
-          <SearchInput
-            onChange={this.handleInputChange}
-            value={this.state.query}
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-          />
-        </Searchform>
-      </WrapSearchbar>
+            <SearchInput
+              onChange={this.handleInputChange}
+              value={this.state.query}
+              type="text"
+              name="query"
+              autoComplete="off"
+              autoFocus
+              placeholder="Search images and photos"
+            />
+          </Searchform>
+        </WrapSearchbar>
+      </Formik>
     );
   }
 }
-
-Searchbar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-};

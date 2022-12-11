@@ -19,10 +19,10 @@ export default class Modal extends Component {
   }
 
   render() {
-    const { url, onClose } = this.props;
+    const { url } = this.props;
 
     return createPortal(
-      <ModalOverlay onClick={onClose}>
+      <ModalOverlay>
         <ModalWindow>
           <ModalImg src={url} alt="img" />
         </ModalWindow>
@@ -34,5 +34,4 @@ export default class Modal extends Component {
 
 Modal.propTypes = {
   url: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
