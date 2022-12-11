@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { Image, ImgItem } from './imageGalleryItem.styled';
 import Modal from 'components/Modal/Modal';
+import PropTypes from 'prop-types';
 
 class ImageGalleryItem extends Component {
   state = { isModalOpen: false };
@@ -24,3 +25,8 @@ class ImageGalleryItem extends Component {
 }
 
 export default ImageGalleryItem;
+
+ImageGalleryItem.propTypes = {
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+};
