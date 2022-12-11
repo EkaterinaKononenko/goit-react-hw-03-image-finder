@@ -18,7 +18,7 @@ class ImageGalleryItem extends Component {
     return (
       <ImgItem onClick={toggleModal}>
         <Image src={webformatURL} alt="img" />
-        {isModalOpen && <Modal url={largeImageURL} closeModal={toggleModal} />}
+        {isModalOpen && <Modal url={largeImageURL} onClose={toggleModal} />}
       </ImgItem>
     );
   }

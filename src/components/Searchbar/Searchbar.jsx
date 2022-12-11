@@ -3,10 +3,11 @@ import {
   WrapSearchbar,
   Searchform,
   SearchformButton,
-  SearchButtonSpan,
+  //SearchButtonSpan,
   SearchInput,
 } from './Searchbar.styled';
 import { Formik } from 'formik';
+import { FcSearch } from 'react-icons/fc';
 
 export default class Searchbar extends Component {
   state = {
@@ -33,10 +34,6 @@ export default class Searchbar extends Component {
       <Formik>
         <WrapSearchbar>
           <Searchform onSubmit={this.handleSubmit}>
-            <SearchformButton type="submit">
-              <SearchButtonSpan>Search</SearchButtonSpan>
-            </SearchformButton>
-
             <SearchInput
               onChange={this.handleInputChange}
               value={this.state.query}
@@ -46,6 +43,9 @@ export default class Searchbar extends Component {
               autoFocus
               placeholder="Search images and photos"
             />
+            <SearchformButton type="submit">
+              <FcSearch size="30">Search</FcSearch>
+            </SearchformButton>
           </Searchform>
         </WrapSearchbar>
       </Formik>
