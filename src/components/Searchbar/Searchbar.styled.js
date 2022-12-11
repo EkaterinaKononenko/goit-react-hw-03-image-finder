@@ -15,7 +15,12 @@ export const WrapSearchbar = styled.header`
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
-  background-color: #3f51b5;
+    background: linear-gradient(
+    55deg,
+    rgb(240, 240, 240) 10%,
+    rgb(180, 180, 180),
+    rgb(169, 169, 169)
+  );
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }`;
@@ -26,19 +31,20 @@ export const Searchform = styled(Form)`
   width: 100%;
   max-width: 600px;
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
 `;
 
 export const SearchformButton = styled.button`
   display: inline-block;
   width: 48px;
-  height: 48px;
-  border: 0;
+  height: 50px;
+  border: none;
   background-image: url('https://image.flaticon.com/icons/svg/149/149852.svg');
   background-size: 40%;
   background-repeat: no-repeat;
   background-position: center;
+  background: #d3d3d3;
   opacity: 0.6;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
@@ -53,7 +59,7 @@ export const SearchInput = styled(Field)`
   display: inline-block;
   width: 100%;
   font: inherit;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   outline: none;
   padding-left: 20px;

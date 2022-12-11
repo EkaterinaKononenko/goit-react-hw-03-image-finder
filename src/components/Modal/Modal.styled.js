@@ -19,13 +19,9 @@ export const ModalWindow = styled.div`
 `;
 
 export const ModalImg = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   object-fit: fill;
   border-radius: 4px;
-  &:hover {
-    transform: scale(1.05);
-    transition: transform 1000ms;
-    cursor: zoom-in;
   }
 `;
