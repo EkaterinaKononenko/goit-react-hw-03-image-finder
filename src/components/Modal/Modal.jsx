@@ -19,7 +19,6 @@ export default class Modal extends Component {
 
   render() {
     const { url, onClose } = this.props;
-    // console.log(url);
 
     return createPortal(
       <ModalOverlay onClick={onClose}>

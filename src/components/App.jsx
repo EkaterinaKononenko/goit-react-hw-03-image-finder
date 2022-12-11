@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import axios from 'axios';
 import Searchbar from './Searchbar/Searchbar';
-import Modal from './Modal/Modal';
 import Button from './Button/Button';
 import MyLoader from './Loader/Loader';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -13,10 +12,8 @@ export default class App extends Component {
     page: 1,
     query: '',
     hits: [],
-    openedModal: null,
     isLoading: false,
     error: null,
-    largeImageUrl: ' ',
   };
 
   handleSearch = newQuery => {
@@ -30,20 +27,6 @@ export default class App extends Component {
   loadMore = () => {
     this.setState(prevState => {
       return { page: prevState.page + 1 };
-    });
-  };
-
-  openModal = (type, url) => {
-    this.setState({
-      openedModal: type,
-      largeImageUrl: url,
-    });
-  };
-
-  closeModal = () => {
-    this.setState({
-      openedModal: null,
-      largeImageUrl: ' ',
     });
   };
 
@@ -72,21 +55,18 @@ export default class App extends Component {
   }
 
   render() {
-    const { hits, largeImageUrl, isLoading, page, openedModal } = this.state;
-    const { openModal, closeModal, handleSearch, loadMore } = this;
+    const { hits, isLoading, page } = this.state;
+    const { handleSearch, loadMore } = this;
     const pageQuantity = Math.floor(hits.length / 12);
 
     return (
       <Container>
         <Searchbar onSubmit={handleSearch} />
-        <ImageGallery images={hits} onOpenModal={openModal} />
+        <ImageGallery images={hits} />
         {hits.length > 11 && !isLoading && pageQuantity === page && (
           <Button onClick={loadMore} />
         )}
         {isLoading && <MyLoader />}
-        {openedModal && (
-          <Modal url={largeImageUrl} alt="img" onClose={closeModal} />
-        )}
       </Container>
     );
   }
