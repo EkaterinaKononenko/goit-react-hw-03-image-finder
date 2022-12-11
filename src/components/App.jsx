@@ -71,7 +71,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { hits, largeImageUrl } = this.state;
+    const { hits, largeImageUrl, isLoading } = this.state;
     const { openModal, closeModal, handleSearch, loadMore } = this;
 
     return (
@@ -83,7 +83,7 @@ export default class App extends Component {
           onCloseModal={closeModal}
         />
         <Button onClick={loadMore} />
-        <MyLoader />
+        {isLoading && <MyLoader />}
         {largeImageUrl && (
           <Modal url={largeImageUrl} onCloseModal={closeModal} />
         )}
