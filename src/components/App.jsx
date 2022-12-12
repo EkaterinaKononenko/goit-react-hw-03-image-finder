@@ -59,6 +59,7 @@ export default class App extends Component {
             autoClose: 3000,
             theme: 'colored',
           });
+
         if (response.length < 12)
           return toast.info(`That's all. We don't have more images.`, {
             position: 'top-right',
