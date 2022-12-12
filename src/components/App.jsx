@@ -44,6 +44,7 @@ export default class App extends Component {
         this.setState({
           isLoading: false,
         });
+
         if (response.length === 0) {
           return toast.warn("We couldn't find result on your request.", {
             position: 'top-right',
