@@ -55,7 +55,7 @@ export default class App extends Component {
 
         if (page === 1)
           return toast.success(`Wow! We found what you need!`, {
-            // icon: '🚀',
+            icon: '🚀',
             position: 'top-right',
             autoClose: 3000,
             theme: 'colored',
