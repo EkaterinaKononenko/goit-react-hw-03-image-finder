@@ -3,11 +3,12 @@ import {
   WrapSearchbar,
   Searchform,
   SearchformButton,
-  //SearchButtonSpan,
   SearchInput,
 } from './Searchbar.styled';
 import { Formik } from 'formik';
 import { FcSearch } from 'react-icons/fc';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default class Searchbar extends Component {
   state = {
@@ -23,7 +24,14 @@ export default class Searchbar extends Component {
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.query.trim() === '') {
-      return 'Please, try again.';
+      return toast.error(
+        'Field for searching is empty. Add information for request.',
+        {
+          position: 'top-right',
+          autoClose: 3000,
+          theme: 'colored',
+        }
+      );
     }
     this.props.onSubmit(this.state.query);
     this.setState({ query: '' });
